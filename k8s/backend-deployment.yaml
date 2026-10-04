@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: stayeasy-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stayeasy-backend
+  template:
+    metadata:
+      labels:
+        app: stayeasy-backend
+    spec:
+      containers:
+        - name: backend
+          image: stayeasy-backend:latest
+          # IfNotPresent is required when using locally built Docker images in Minikube
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 15
