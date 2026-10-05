@@ -41,7 +41,7 @@ export default function Home() {
     <div>
       {/* Hero Banner */}
       <section className="hero-section">
-        <h1 className="hero-title">StayEasy: Hello</h1>
+        <h1 className="hero-title">StayEasy</h1>
         <p className="hero-tagline">Find your perfect stay</p>
 
         {/* Search Bar for Hotel / City */}
