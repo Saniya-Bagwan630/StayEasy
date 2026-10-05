@@ -1,8 +1,10 @@
 pipeline {
+    agent any
+    
     environment {
         KUBECONFIG = '/var/jenkins_home/.kube/config'
     }
-    
+
     stages {
 
         stage('Build Backend Image') {
