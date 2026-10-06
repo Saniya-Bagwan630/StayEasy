@@ -108,7 +108,7 @@ npm run dev
 ```
 
 ### Step 2: Start the Frontend
-
+#demo checking
 Open a second terminal:
 ```bash
 cd frontend
